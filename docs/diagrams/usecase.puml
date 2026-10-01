@@ -1,0 +1,38 @@
+@startuml usecase
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Администратор" as Admin
+actor "Клиент" as Client
+
+rectangle "Учёт тренеров и занятий в фитнес-клубе" {
+    usecase "Просмотр расписания" as UC_Schedule
+
+    usecase "Запись на занятие" as UC_Book
+    usecase "Отмена записи" as UC_CancelBooking
+    usecase "Просмотр истории посещений" as UC_History
+
+    usecase "Управление тренерами" as UC_Trainers
+    usecase "Составление расписания" as UC_MakeSchedule
+    usecase "Регистрация клиентов" as UC_RegClient
+    usecase "Оформление абонементов" as UC_Membership
+    usecase "Формирование отчётов" as UC_Reports
+
+    usecase "Проверка свободных мест" as UC_CheckSlots
+}
+
+Admin --> UC_Schedule
+Client --> UC_Schedule
+
+Client --> UC_Book
+Client --> UC_CancelBooking
+Client --> UC_History
+
+Admin --> UC_Trainers
+Admin --> UC_MakeSchedule
+Admin --> UC_RegClient
+Admin --> UC_Membership
+Admin --> UC_Reports
+
+UC_Book ..> UC_CheckSlots : <<include>>
+@enduml
