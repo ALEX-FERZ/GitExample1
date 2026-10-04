@@ -26,21 +26,21 @@ rectangle "Система" {
 }
 
 ' Связи для Администратора
-admin --> reg_admin
-reg_admin --> login_admin
-login_admin --> db_clients
-login_admin --> db_trainers
-login_admin --> view_schedule_admin
+admin - reg_admin
+reg_admin - login_admin
+login_admin - db_clients
+login_admin - db_trainers
+login_admin - view_schedule_admin
 
-db_clients --> reg_clients
-db_trainers --> reg_trainers
-view_schedule_admin --> edit_schedule
+db_clients - reg_clients
+db_trainers - reg_trainers
+view_schedule_admin - edit_schedule
 
 ' Связи для Клиента
-client --> reg_client
-reg_client --> login_client
-login_client --> view_schedule_client
-login_client --> book_lesson
+client - reg_client
+reg_client - login_client
+login_client - view_schedule_client
+login_client - book_lesson
 
 book_lesson .> check_places : <<Include>>
 
